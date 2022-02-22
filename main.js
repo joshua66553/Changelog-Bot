@@ -1,25 +1,26 @@
-const Discord = require('discord.js')
-const client = new Discord.Client()
-const config = require('./config.js')
+const Discord = require('discord.js');
+const client = new Discord.Client({ partials: ["MESSAGE", "CHANNEL", "REACTION"] });
+const config = require('./config');
 const fs = require('fs');
+
 client.commands = new Discord.Collection();
-const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'))
+const commandFiles = fs.readdirSync('./commands').filter(file => file.endsWith('.js'));
 
 client.on('ready', () => {
-    console.log('Logged in as ' + client.username)
-    setInterval(async () => {
-        const guild = await client.guilds.fetch('848109201901617193', true, true);
+    console.log('Logged in as ' + client.user.tag)
+    setInterval(async() => {
+        const guild = await client.guilds.fetch(`${config.bot.guild}`, true, true);
         const newActivity = `over ${guild.memberCount - 7} members.`;
-          client.user.setActivity(newActivity , { type: 'WATCHING' });
-        }, 10000);
+        client.user.setActivity(newActivity, { type: 'WATCHING' });
+    }, 10000);
 })
 
 client.on("guildMemberAdd", member => {
-    setInterval(async () => {
-        const guild = await client.guilds.fetch('848109201901617193', true, true);
+    setInterval(async() => {
+        const guild = await client.guilds.fetch(`${config.bot.guild}`, true, true);
         const newActivity = `over ${guild.memberCount - 7} members.`;
-          client.user.setActivity(newActivity , { type: 'WATCHING' });
-        }, 10000);
+        client.user.setActivity(newActivity, { type: 'WATCHING' });
+    }, 10000);
 })
 
 for (const file of commandFiles) {
@@ -44,4 +45,4 @@ client.on('message', message => {
 client.on('error', console.error);
 client.on('warn', console.warn);
 
-client.login(`${config.bot.prefix}`);
+client.login(config.bot.token);
