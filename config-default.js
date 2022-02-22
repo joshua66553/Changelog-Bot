@@ -4,6 +4,8 @@ const config = {
         prefix: "qb!",
         token: "Insert-Token",
         debug_mode: true,
+        color: "#32a877",
+        logo: "https://cdn.discordapp.com/attachments/873028975503478824/936845464471490590/4.0logonobackground.png",
         guild: "783454973790257172",
         copyright: "Ghosted RolePlay"
     },
