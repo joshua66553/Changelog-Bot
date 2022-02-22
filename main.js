@@ -11,17 +11,47 @@ client.on('ready', () => {
     try {
         signale.success('Logged in as ' + client.user.tag)
     } catch {}
-    if (config.presence_config.use_mem === true) {
+    if (config.presence_config.use_mem) {
         setInterval(async() => {
             const guild = await client.guilds.fetch(`${config.bot.guild}`, true, true);
             const newActivity = `over ${guild.memberCount - 7} members.`;
             client.user.setActivity(newActivity, { type: 'WATCHING' });
         }, 10000);
-    }
-})
+    } else {
+        let statuses = [{
+                activity: {
+                    name: `${config["presence_config"].presname1}`,
+                    type: `${config["presence_config"].prestype1}`
+                },
+                status: `${config["presence_config"].presstatus1}`
+            },
+            {
+                activity: {
+                    name: `${config["presence_config"].presname2}`,
+                    type: `${config["presence_config"].prestype2}`
+                },
+                status: `${config["presence_config"].presstatus2}`
+            },
+            {
+                activity: {
+                    name: `${config["presence_config"].presname3}`,
+                    type: `${config["presence_config"].prestype3}`
+                },
+                status: `${config["presence_config"].presstatus3}`
+            }
+        ];
 
-process.on('uncaughtException', (error) => {
-    signale.fatal(`Uncaught Exception: ${error}`)
+        let i = 0;
+        setInterval(() => {
+            let status = statuses[i];
+            if (!status) {
+                status = statuses[0];
+                i = 0;
+            }
+            client.user.setPresence(status);
+            i++;
+        }, config["presence_config"].preschangetimer);
+    }
 })
 
 if (config.presence_config.use_mem === true) {
@@ -52,42 +82,6 @@ client.on('message', message => {
         message.reply('There was an error.')
     }
 })
-
-if (config.presence_config.use_mem === false) {
-    let statuses = [{
-            activity: {
-                name: `${config["presence_config"].presname1}`,
-                type: `${config["presence_config"].prestype1}`
-            },
-            status: `${config["presence_config"].presstatus1}`
-        },
-        {
-            activity: {
-                name: `${config["presence_config"].presname2}`,
-                type: `${config["presence_config"].prestype2}`
-            },
-            status: `${config["presence_config"].presstatus2}`
-        },
-        {
-            activity: {
-                name: `${config["presence_config"].presname3}`,
-                type: `${config["presence_config"].prestype3}`
-            },
-            status: `${config["presence_config"].presstatus3}`
-        }
-    ];
-
-    let i = 0;
-    setInterval(() => {
-        let status = statuses[i];
-        if (!status) {
-            status = statuses[0];
-            i = 0;
-        }
-        client.user.setPresence(status);
-        i++;
-    }, config["presence_config"].preschangetimer);
-}
 
 client.on('error', console.error);
 client.on('warn', console.warn);
