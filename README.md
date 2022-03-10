@@ -1,7 +1,7 @@
 # Dependencies:
 
-- [Node.JS V14+](https://nodejs.org/download/release/v14.19.0/) (You will need this to run the bot)
-- If you have a windows VPS you can use that all you need to do is install [Node.JS V14+](https://nodejs.org/download/release/v14.19.0/).
+- [Node.JS V16](https://nodejs.org/en/download/) (You will need this to run the bot)
+- If you have a windows VPS you can use that all you need to do is install [Node.JS V16](https://nodejs.org/en/download/).
 - If you have a linix vps you will need to install node.js linix just search up `node.js linix install`.
 - You caould also use a bot hosting provider a good one is [SnowSide Hosting](https://snowsidehosting.com) just click bot hosting on the website.
 - [Discord Aplication](https://discord.com/developers/applications) (This is the bot.)
@@ -18,4 +18,4 @@
 - Secondly you are gonna run the `Run.bat` onece the cmd has closed this will start the bot for you.
 
 # To Use The Bot:
-- Do /update `<what you have doento the server>`
+- Do /update `what you have doento the server`
