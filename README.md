@@ -18,4 +18,4 @@
 - Secondly you are gonna run the `Run.bat` onece the cmd has closed this will start the bot for you.
 
 # To Use The Bot:
-- Do /update *<what you have doento the server>*
+- Do /update `<what you have doento the server>`
