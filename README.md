@@ -16,6 +16,3 @@
 
 - First thing you are gonna do is to run the `NPM Installer.bat` that i have made for yall this is located into the directory that you installed it into.
 - Secondly you are gonna run the `Run.bat` onece the cmd has closed this will start the bot for you.
-
-# To Use The Bot:
-- Do /update `what you have done to the server`
