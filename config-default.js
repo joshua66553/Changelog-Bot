@@ -1,30 +1,35 @@
 const config = {
 
     bot: {
-        prefix: "qb!",
-        token: "Insert-Token",
+        token: "fill in your bot token here",
         debug_mode: true,
         color: "#32a877",
-        logo: "https://cdn.discordapp.com/attachments/873028975503478824/936845464471490590/4.0logonobackground.png",
-        guild: "783454973790257172",
+        status: "Do /Update", // Discord status message (Update the status type in ready.js line 15)
+        logo: "not uesd anymore",
+        guild: "fill in your guild id here",
+        errorChannelID: "fill in your channel id here",
         copyright: "Ghosted RolePlay"
     },
 
     permissions: {
-        staffperms: ["864600064546832384"]
+        staffperms: ["fill in your role id here", "fill in your role id here"]
     },
 
     presence_config: {
         use_mem: false,
+
         preschangetimer: "10000",
+
         presname1: "This Server",
-        prestype1: "WATCHING",
+        prestype1: 3,
         presstatus1: "dnd",
+
         presname2: "The Door",
-        prestype2: "WATCHING",
+        prestype2: 3,
         presstatus2: "dnd",
+
         presname3: "You Get Beamed",
-        prestype3: "WATCHING",
+        prestype3: 3,
         presstatus3: "dnd"
     }
 }
